@@ -23,11 +23,5 @@ public class Triangle {
     public int getSide3() {
         return side3;
     }
-
-    //public double calculate1() {
-    //    return Math.sqrt(((side1+side2+side3)/2)*(((side1+side2+side3)/2)-side1)*(((side1+side2+side3)/2)-side2)*(((side1+side2+side3)/2)-side3));
-   // }
-   // public int calculate2(){
-    //    return (this.side1 + this.side2 + this.side3);
-    //}
+ }
 }
