@@ -23,5 +23,6 @@ public class Triangle {
     public int getSide3() {
         return side3;
     }
- }
+
+
 }

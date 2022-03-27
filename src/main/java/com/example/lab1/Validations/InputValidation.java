@@ -3,8 +3,6 @@ import com.example.lab1.Exceptions.MyException;
 import com.example.lab1.Results.Result;
 import com.example.lab1.Triangle;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 public class InputValidation {
 
     public static boolean isInt(int s) {
