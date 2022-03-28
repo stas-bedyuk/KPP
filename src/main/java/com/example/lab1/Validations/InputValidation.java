@@ -16,26 +16,26 @@ public class InputValidation {
 
     public static Result optionsValidation(long id, Triangle a) {
 
-        if ( (isInt(a.getSide1()))) {
+        if ( (isInt(a.side1()))) {
 
         } else {
             throw new MyException("BAD REQUEST ERROR 400: Side1 is invalid");
         }
 
-        if ( (isInt(a.getSide2()))) {
+        if ( (isInt(a.side2()))) {
 
         } else {
             throw new MyException("BAD REQUEST ERROR 400: Side2 is invalid");
         }
 
-            if ((isInt(a.getSide3()))) {
+            if ((isInt(a.side3()))) {
 
             } else {
                 throw new MyException("BAD REQUEST ERROR 400: Side3 is invalid");
             }
 
-            double sq = Math.sqrt(((a.getSide1()+a.getSide2()+a.getSide3())/2)*(((a.getSide1()+a.getSide2()+a.getSide3())/2)- a.getSide1())*(((a.getSide1()+a.getSide2()+a.getSide3())/2)- a.getSide2())*(((a.getSide1()+a.getSide2()+a.getSide3())/2)- a.getSide3()));
-            int pr = a.getSide1()+a.getSide2()+a.getSide3();
+            double sq = Math.sqrt( ((a.side1()+a.side2()+a.side3())/2) * (((a.side1()+a.side2()+a.side3())/2)- a.side1()) * (((a.side1()+a.side2()+a.side3())/2)- a.side2()) * (((a.side1()+a.side2()+a.side3())/2)- a.side3()) );
+            int pr = (a.side1()+a.side2()+a.side3());
         return new Result(id,sq,pr);
     }
 

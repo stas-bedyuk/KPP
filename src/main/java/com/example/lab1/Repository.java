@@ -13,11 +13,12 @@ public class Repository {
     }
 
     public Result addToMap(Triangle key, Result result) {
-          hashMap.put(key, result);
+        hashMap.put(key, result);
         return result;
     }
 
     public Result getParameters(Triangle key) {
+
         return hashMap.get(key);
     }
 }
