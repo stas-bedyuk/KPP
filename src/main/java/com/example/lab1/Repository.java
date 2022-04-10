@@ -2,7 +2,7 @@ package com.example.lab1;
 
 import com.example.lab1.Logger.MyLogger;
 import org.springframework.stereotype.Component;
-import com.example.lab1.Results.Result;
+import com.example.lab1.Validations.Results.Result;
 import java.util.HashMap;
 import org.apache.logging.log4j.Level;
 

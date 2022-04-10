@@ -1,6 +1,6 @@
 package com.example.lab1.Validations;
 import com.example.lab1.Exceptions.MyException;
-import com.example.lab1.Results.Result;
+import com.example.lab1.Validations.Results.Result;
 import com.example.lab1.Triangle;
 
 public class InputValidation {

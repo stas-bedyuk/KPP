@@ -1,7 +1,7 @@
 package com.example.lab1.ErrorHandler;
 
 import com.example.lab1.Exceptions.MyException;
-import com.example.lab1.Results.Response;
+import com.example.lab1.Validations.Results.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
