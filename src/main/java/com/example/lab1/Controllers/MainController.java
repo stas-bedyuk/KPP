@@ -5,11 +5,14 @@ import com.example.lab1.Validations.Results.Result;
 import com.example.lab1.Triangle;
 import com.example.lab1.Validations.InputValidation;
 import org.apache.logging.log4j.Level;
+
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-
-
 
 @RestController
 
@@ -35,4 +38,20 @@ public class MainController {
                 return  rep.addToMap(ThisTriangle,InputValidation.optionsValidation(counter.incrementAndGet(),ThisTriangle));
             }
         }
+
+    @PostMapping("/triangleStream")
+    public List<Result> EnterStream(@Valid @RequestBody List<Triangle> bodyList){
+
+        NumberOfRequests.IncremetNumber();
+        List<Result> resultList = new LinkedList<>();
+        bodyList.forEach((currentElement) -> {
+            try {
+                resultList.add(InputValidation.optionsValidation(counter.incrementAndGet(),currentElement));
+            } catch (IllegalArgumentException e) {
+                MyLogger.Log(Level.INFO,  "Error getMapping");
+            }
+        });
+        MyLogger.Log(Level.INFO,  "Successfully getMapping");
+        return resultList;
+    }
 }
