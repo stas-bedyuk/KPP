@@ -48,10 +48,10 @@ public class MainController {
             try {
                 resultList.add(InputValidation.optionsValidation(counter.incrementAndGet(),currentElement));
             } catch (IllegalArgumentException e) {
-                MyLogger.Log(Level.INFO,  "Error getMapping");
+                MyLogger.Log(Level.INFO,  "Error postMapping");
             }
         });
-        MyLogger.Log(Level.INFO,  "Successfully getMapping");
+        MyLogger.Log(Level.INFO,  "Successfully postMapping");
         return resultList;
     }
 }
