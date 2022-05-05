@@ -1,15 +1,17 @@
 package com.example.lab1.Controllers;
 import com.example.lab1.Logger.MyLogger;
 import com.example.lab1.Repository;
+import com.example.lab1.Statistics.Statistics;
 import com.example.lab1.Validations.Results.Result;
 import com.example.lab1.Triangle;
 import com.example.lab1.Validations.InputValidation;
 import org.apache.logging.log4j.Level;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -40,7 +42,7 @@ public class MainController {
         }
 
     @PostMapping("/triangleStream")
-    public List<Result> EnterStream(@Valid @RequestBody List<Triangle> bodyList){
+    public ResponseEntity<?> EnterStream(@Valid @RequestBody List<Triangle> bodyList){
 
         NumberOfRequests.IncremetNumber();
         List<Result> resultList = new LinkedList<>();
@@ -48,10 +50,14 @@ public class MainController {
             try {
                 resultList.add(InputValidation.optionsValidation(counter.incrementAndGet(),currentElement));
             } catch (IllegalArgumentException e) {
-                MyLogger.Log(Level.INFO,  "Error postMapping");
+                MyLogger.Log(Level.INFO,  "Error getMapping");
             }
         });
-        MyLogger.Log(Level.INFO,  "Successfully postMapping");
-        return resultList;
+        MyLogger.Log(Level.INFO,  "Successfully getMapping");
+        double sumResultSq = Statistics.calculateMediumOfResult(resultList);
+        double maxResultSq = Statistics.findMaxOfResult(resultList);
+        double minResultSq = Statistics.findMinOfResult(resultList);
+        return new ResponseEntity<>(resultList + "\nSum: " + sumResultSq + "\nMax result: " +
+                maxResultSq + "\nMin result: " + minResultSq, HttpStatus.OK);
     }
 }
